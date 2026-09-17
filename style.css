@@ -1,0 +1,572 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+    --green:#a6ff00;
+    --dark:#06080b;
+    --dark2:#0c1015;
+    --card:#10151b;
+    --gray:#9299a3;
+    --border:#252c34
+}
+html{scroll-behavior:smooth}
+body{
+    background:var(--dark);
+    color:#f5f5f5;
+    font-family:"Montserrat",Arial,sans-serif;
+    overflow-x:hidden
+}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.strona{width:100%}
+
+header{
+    width:100%;
+    height:75px;
+    padding:0 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+    background:rgba(6,8,11,.88);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid var(--border)
+}
+.logo{font-size:22px;font-weight:900;letter-spacing:2px}
+.znak,h2 span{color:var(--green)}
+nav{display:flex;gap:30px}
+nav a{
+    font-size:11px;
+    font-weight:700;
+    transition:color .3s
+}
+nav a:hover{color:var(--green)}
+.przycisk-nav{
+    padding:13px 20px;
+    background:var(--green);
+    color:#000;
+    font-size:10px;
+    font-weight:800
+}
+
+section{padding:110px 7%;border-top:1px solid var(--border)}
+.opis{
+    color:var(--green);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:2px;
+    margin-bottom:18px
+}
+h1{
+    font-size:90px;
+    line-height:1;
+    letter-spacing:8px;
+    font-weight:900
+}
+h2{font-size:45px;line-height:1.05;margin-top:20px}
+h3{font-size:16px;margin-bottom:15px}
+p{color:var(--gray);line-height:1.8}
+
+.przycisk{
+    display:inline-block;
+    padding:15px 22px;
+    border:1px solid transparent;
+    font-size:11px;
+    font-weight:800;
+    transition:.3s
+}
+.glowny{background:var(--green);color:#000}
+.glowny:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 25px rgba(166,255,0,.35)
+}
+.drugi{background:transparent;color:#fff;border-color:var(--border)}
+.drugi:hover{border-color:var(--green);color:var(--green)}
+
+#infoinnychstron{
+    min-height:100vh;
+    padding-top:140px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    background:
+        radial-gradient(circle at 75% 35%,rgba(166,255,0,.08),transparent 25%),
+        linear-gradient(120deg,#080c12,#111820,#080a0d)
+}
+#infoinnychstron::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:50px 50px;
+    opacity:.5
+}
+.wstep{position:relative;z-index:2;max-width:650px}
+.tekst{max-width:500px;margin:25px 0}
+.przyciski{display:flex;flex-wrap:wrap;gap:15px}
+
+.miejsce-drona{
+    position:absolute;
+    width:500px;
+    height:400px;
+    right:8%;
+    top:150px;
+    z-index:3
+}
+.dron{
+    width:260px;
+    height:130px;
+    position:absolute;
+    left:100px;
+    top:110px;
+    animation:fly 5s ease-in-out infinite
+}
+.korpus-drona{
+    position:absolute;
+    width:120px;
+    height:65px;
+    left:70px;
+    top:30px;
+    background:linear-gradient(135deg,#1d252d,#080b0f);
+    border:2px solid #3a444f;
+    border-radius:45%;
+    box-shadow:0 20px 40px rgba(0,0,0,.8)
+}
+.smiglo{
+    position:absolute;
+    width:110px;
+    height:5px;
+    background:#2c353d;
+    border-radius:50%;
+    animation:rotateDrone .25s linear infinite
+}
+.smiglo::before{
+    content:"";
+    position:absolute;
+    width:25px;
+    height:25px;
+    left:42px;
+    top:-10px;
+    background:#121820;
+    border-radius:50%
+}
+.rotor-1{top:10px;left:0}
+.rotor-2{top:10px;right:0}
+.rotor-3{bottom:5px;left:0}
+.rotor-4{right:0;bottom:5px}
+
+.kamera{
+    position:absolute;
+    width:40px;
+    height:35px;
+    left:110px;
+    bottom:0;
+    background:#10161d;
+    border:2px solid #3c4650;
+    border-radius:10px
+}
+.swiatlo-drona{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:var(--green);
+    border-radius:50%;
+    box-shadow:0 0 20px var(--green)
+}
+.lewe{left:10px;top:15px}
+.prawe{right:10px;top:15px}
+.okrag{
+    position:absolute;
+    width:380px;
+    height:380px;
+    left:30px;
+    top:10px;
+    border:1px solid rgba(166,255,0,.15);
+    border-radius:50%;
+    animation:scanPulse 3s infinite
+}
+.informacje{
+    position:absolute;
+    bottom:35px;
+    left:7%;
+    right:7%;
+    z-index:3;
+    display:flex;
+    gap:50px
+}
+.informacje div{padding-left:15px;border-left:1px solid var(--border)}
+.informacje strong{
+    display:block;
+    color:var(--green);
+    font-size:11px
+}
+.informacje span{color:var(--gray);font-size:10px}
+
+#system,.zastosowania{background:#080c11}
+.naglowek{margin-bottom:50px}
+.siatka{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px
+}
+.karta{
+    min-height:280px;
+    padding:35px;
+    position:relative;
+    background:linear-gradient(145deg,#10151b,#090c10);
+    border:1px solid var(--border);
+    transition:.35s
+}
+.karta:hover,.siatka-zastosowan>div:hover{
+    transform:translateY(-8px);
+    border-color:var(--green)
+}
+.karta i,.siatka-zastosowan i{
+    display:block;
+    margin-bottom:30px;
+    color:var(--green);
+    font-size:28px;
+    font-style:normal
+}
+.karta p{font-size:13px}
+.karta>span{
+    position:absolute;
+    right:30px;
+    bottom:25px;
+    color:var(--green);
+    font-size:25px
+}
+.aktywna{box-shadow:0 0 40px rgba(166,255,0,.08)}
+
+#dron{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center
+}
+.opis-drona>p:not(.opis),
+.opis-kolibra>p:not(.opis),
+.opis-danych>p:not(.opis),
+.informacje-kontakt>p:not(.opis){margin:25px 0}
+
+.parametry-lotu{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px
+}
+.parametry-lotu div,.parametry div{
+    padding-left:15px;
+    border-left:2px solid var(--green)
+}
+.parametry-lotu strong{
+    display:inline-block;
+    color:var(--green);
+    font-size:25px
+}
+.parametry-lotu span{color:var(--gray);font-size:11px}
+.parametry-lotu p{font-size:10px}
+
+.widok-drona{
+    min-height:350px;
+    display:flex;
+    align-items:center;
+    justify-content:center
+}
+.duzy-dron{width:330px;height:250px;position:relative}
+.korpus{
+    position:absolute;
+    width:150px;
+    height:100px;
+    left:90px;
+    top:75px;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#202a33,#090d12);
+    border:2px solid #34404a;
+    border-radius:40px;
+    font-weight:800;
+    box-shadow:0 0 60px rgba(166,255,0,.08)
+}
+.ramie{
+    position:absolute;
+    width:130px;
+    height:10px;
+    background:#28323b;
+    border-radius:20px
+}
+.arm-1{top:60px;left:0;transform:rotate(25deg)}
+.arm-2{top:60px;right:0;transform:rotate(-25deg)}
+.arm-3{bottom:60px;left:0;transform:rotate(-25deg)}
+.arm-4{right:0;bottom:60px;transform:rotate(25deg)}
+.arm-5{top:20px;left:100px;transform:rotate(90deg)}
+.arm-6{bottom:20px;left:100px;transform:rotate(90deg)}
+
+#modulpomiarowy{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:40px;
+    align-items:center;
+    background:#090e0c
+}
+.urzadzenie{
+    height:350px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center
+}
+.poswiata{
+    position:absolute;
+    width:280px;
+    height:280px;
+    background:radial-gradient(circle,rgba(166,255,0,.2),transparent 65%);
+    animation:glowPulse 3s infinite
+}
+.obudowa{
+    position:relative;
+    z-index:2;
+    width:200px;
+    height:220px;
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background:linear-gradient(135deg,#e9e9e9,#9da2a2);
+    color:#111;
+    border-radius:8px;
+    box-shadow:15px 20px 50px #000
+}
+.znak-urzadzenia{
+    width:35px;
+    height:35px;
+    margin-bottom:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#111;
+    color:var(--green)
+}
+.obudowa strong{font-size:20px}
+.obudowa span{margin-top:8px;font-size:8px}
+.parametry{display:flex;flex-direction:column;gap:30px}
+.parametry div{padding-left:18px}
+.parametry strong{display:block;color:var(--green);font-size:28px}
+.parametry span{color:var(--gray);font-size:10px}
+
+.jak-dziala{text-align:center}
+.naglowek-srodek{margin-bottom:60px}
+.etapy{
+    display:flex;
+    align-items:center;
+    justify-content:center
+}
+.etap{max-width:180px;text-align:center}
+.etap>strong{color:var(--gray);font-size:11px}
+.ikona-etapu{margin:20px 0;font-size:35px}
+.etap h3{font-size:13px}
+.etap p{font-size:11px}
+.linia{
+    width:80px;
+    height:1px;
+    margin:0 15px;
+    background:linear-gradient(90deg,var(--green),transparent)
+}
+
+#danePowierzhni{
+    display:grid;
+    grid-template-columns:.8fr 1.5fr;
+    gap:70px;
+    align-items:center;
+    background:#080d11
+}
+.przyciski-lokalizacji{display:flex;flex-wrap:wrap;gap:10px}
+.aktualizacja-info{margin-top:20px;font-size:10px}
+.panel{
+    padding:25px;
+    background:linear-gradient(145deg,#101820,#080c10);
+    border:1px solid #28323b;
+    box-shadow:0 0 60px rgba(0,0,0,.5)
+}
+.panel-gora{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-bottom:20px;
+    border-bottom:1px solid var(--border)
+}
+.panel-gora strong{font-size:13px}
+.na-zywo{color:var(--green);font-size:10px;font-weight:700}
+.na-zywo>span{
+    display:inline-block;
+    width:7px;
+    height:7px;
+    margin-right:5px;
+    background:var(--green);
+    border-radius:50%;
+    animation:livePulse 1s infinite
+}
+.lokalizacja{
+    padding:20px 0;
+    color:#fff;
+    font-size:13px;
+    font-weight:700
+}
+.dane{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px
+}
+.dana{
+    min-height:120px;
+    padding:20px;
+    background:rgba(255,255,255,.015);
+    border:1px solid var(--border)
+}
+.dana strong{display:block;color:var(--green);font-size:27px}
+.dana span{
+    display:block;
+    margin-bottom:15px;
+    color:var(--gray);
+    font-size:9px
+}
+.dana p{font-size:9px}
+.status-powietrza{
+    margin-top:15px;
+    padding-top:15px;
+    border-top:1px solid var(--border);
+    font-size:10px
+}
+.status-powietrza span{color:var(--gray)}
+.status-powietrza strong{margin-left:8px;color:var(--green)}
+
+.siatka-zastosowan{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px
+}
+.siatka-zastosowan>div{
+    min-height:230px;
+    padding:25px;
+    background:#10151b;
+    border:1px solid var(--border);
+    transition:.3s
+}
+.siatka-zastosowan>div:hover{
+    transform:translateY(-5px);
+    border-color:var(--green)
+}
+.siatka-zastosowan i{font-size:25px}
+.siatka-zastosowan h3{font-size:15px}
+.siatka-zastosowan p{font-size:11px}
+
+#kontakt{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    background:#080c10
+}
+.dane-kontakt{margin-top:30px}
+.dane-kontakt p{
+    margin-bottom:12px;
+    color:#d5d5d5;
+    font-size:13px
+}
+#kontakt form{display:flex;flex-direction:column;gap:15px}
+.wiersz-formularza{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px
+}
+#kontakt input,#kontakt textarea{
+    width:100%;
+    padding:16px;
+    outline:none;
+    color:#fff;
+    background:#0c1117;
+    border:1px solid var(--border)
+}
+#kontakt input:focus,#kontakt textarea:focus{border-color:var(--green)}
+#kontakt textarea{min-height:150px;resize:vertical}
+#kontakt button{width:fit-content}
+
+footer{
+    padding:35px 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    border-top:1px solid var(--border)
+}
+footer strong{color:#fff;font-size:18px}
+footer p,footer small{color:var(--gray);font-size:10px}
+
+@keyframes fly{
+    0%,100%{transform:translateY(0) rotate(0)}
+    50%{transform:translateY(-20px) rotate(2deg)}
+}
+@keyframes rotateDrone{to{transform:rotate(360deg)}}
+@keyframes scanPulse{
+    0%{opacity:0;transform:scale(.8)}
+    50%{opacity:1}
+    100%{opacity:0;transform:scale(1.15)}
+}
+@keyframes glowPulse{
+    0%,100%{opacity:.5;transform:scale(.9)}
+    50%{opacity:1;transform:scale(1.1)}
+}
+@keyframes livePulse{50%{opacity:.2}}
+
+@media(max-width:1000px){
+    nav{display:none}
+    .przycisk-nav{display:block}
+    .miejsce-drona{right:-100px;opacity:.45}
+    .siatka,.siatka-zastosowan{grid-template-columns:repeat(2,1fr)}
+    #modulpomiarowy,#dron,#danePowierzhni,#kontakt{grid-template-columns:1fr}
+    .urzadzenie{margin:auto}
+    .etapy{flex-wrap:wrap;gap:25px}
+    .linia{display:none}
+}
+
+@media(max-width:600px){
+    header{padding:0 5%}
+    .przycisk-nav{display:none}
+    section{padding:80px 5%}
+    #infoinnychstron{display:block;padding-top:130px}
+    #infoinnychstron h2,h2{font-size:30px}
+    h1{font-size:60px;letter-spacing:5px}
+
+    .informacje{
+        position:relative;
+        inset:auto;
+        margin-top:80px;
+        flex-direction:column;
+        gap:20px
+    }
+    .miejsce-drona{
+        position:relative;
+        top:auto;
+        right:auto;
+        width:300px;
+        height:300px;
+        margin:40px auto 0
+    }
+    .dron{left:20px;top:90px}
+    .okrag{left:0;width:300px;height:300px}
+    .siatka,.siatka-zastosowan,.dane,.wiersz-formularza{
+        grid-template-columns:1fr
+    }
+    .parametry-lotu{grid-template-columns:1fr 1fr}
+    .duzy-dron{transform:scale(.8)}
+    .urzadzenie{width:100%}
+    footer{flex-direction:column;text-align:center}
+}
